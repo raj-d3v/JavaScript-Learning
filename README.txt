@@ -21,6 +21,7 @@ This repository contains my structured learning progress in JavaScript, followin
 15] Arrays & its Methods
 16] Functions
 17] ForEach Loop
+18] Map, Filter, Reduce
 
 📘 Description:
 ---------------
