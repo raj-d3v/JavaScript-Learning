@@ -1,0 +1,15 @@
+body{
+    font-family: monospace;
+    text-align: center;
+
+}
+
+#roll{
+    font-size: 50px;
+    padding: 20px 20px;
+    border-radius: 5px;
+}
+
+#myLabel{
+    font-size: 50px;
+}
