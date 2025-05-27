@@ -110,21 +110,21 @@
 // numbers.splice(5); // from the 5th index all the numbers will be deleted
 // console.log(numbers);
 
-// ------------------------------------------ Excercise ------------------------------------------
+// // ------------------------------------------ Excercise ------------------------------------------
 
-// -- Remove the first company from the array
-// -- Remove Uber & Add Ola in its place
-// -- Add Amazon at the end
+// // -- Remove the first company from the array
+// // -- Remove Uber & Add Ola in its place
+// // -- Add Amazon at the end
 
-// Given array
-let companies = ["Bloomberg", "Microsoft", "Uber", "Google", "IBM", "Netflix"];
-console.log(companies);
+// // Given array
+// let companies = ["Bloomberg", "Microsoft", "Uber", "Google", "IBM", "Netflix"];
+// console.log(companies);
 
-companies.shift();
-console.log(companies);
+// companies.shift();
+// console.log(companies);
 
-companies.splice(1, 1, "Ola");
-console.log(companies);
+// companies.splice(1, 1, "Ola");
+// console.log(companies);
 
-companies.push("Amazon");
-console.log(companies);
+// companies.push("Amazon");
+// console.log(companies);

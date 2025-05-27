@@ -1,10 +1,26 @@
-/* ForEach Loop
+/* ================================================== ForEach  Loop ================================================
 
-    It is a method not a function which we can use with arrays and string and with objects
+    The forEach() method is used to execute a callback function once for each element in an array.
 
-    We can pass three parameters in forEach(value, index, arrayItSelf) and this are optional if we want we can.
+    It is a higher order function that means it either takes another function as parameter inside it or returns another function as their output
 
-    syntax: arr.forEach( callBackFunction);
+    It is a method (not a loop keyword or built-in function) and is available on array objects.
+
+    You can pass three parameters to the callback function:
+      1. value        → The current element being processed.
+      2. index        → The index of the current element.
+      3. arrayItSelf  → The entire array being iterated.
+
+    All three are optional based on your needs.
+
+    Syntax:
+        array.forEach(function(value, index, array) {
+            // Code to execute for each element
+        });
+
+    Note:
+    - It does not return a new array.
+    - It cannot be stopped or broken before completion (unlike a regular loop).
 
 */
 
@@ -29,3 +45,14 @@
 // numbers.forEach((number, index, numbers) => {
 //   console.log(number, index, numbers);
 // });
+
+// ---------- Excercise: For given array of numbers, print the square of each value using the forEach Loop ----------
+
+let nums = [2, 3, 4, 5, 6];
+console.log(nums);
+let squareOfNums = [];
+
+nums.forEach((num) => {
+  squareOfNums.push(num * num);
+});
+console.log(squareOfNums);
