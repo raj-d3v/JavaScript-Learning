@@ -1,0 +1,10 @@
+.myPara {
+  color: cyan;
+}
+
+.myNewPara {
+  background-color: black;
+  padding: 20px;
+  height: 100px;
+  width: 100px;
+}

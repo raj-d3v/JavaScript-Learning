@@ -1,0 +1,14 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 15px;
+  font-family: monospace;
+}
+
+p {
+  margin-top: 10px;
+}

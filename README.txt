@@ -22,6 +22,10 @@ This repository contains my structured learning progress in JavaScript, followin
 16] Functions
 17] ForEach Loop
 18] Map, Filter, Reduce
+19] DOM - Selectors & Properties
+20] DOM - Attributes & Style
+21] DOM - Insert & Delete Element 
+22] Events 
 
 📘 Description:
 ---------------
