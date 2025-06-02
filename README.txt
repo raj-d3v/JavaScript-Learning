@@ -26,6 +26,9 @@ This repository contains my structured learning progress in JavaScript, followin
 20] DOM - Attributes & Style
 21] DOM - Insert & Delete Element 
 22] Events 
+23] Classes & Objects
+24] Error Handling
+25] CallBacks, Async-Await & Promises
 
 📘 Description:
 ---------------

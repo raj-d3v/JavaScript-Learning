@@ -1,5 +1,10 @@
-// // Array - Collection of data
-// //         Arrays are mutable means the data inside can be changed
+/**  Array - Collection of data
+    
+    -> Arrays are mutable means the data inside can be changed
+
+    -> Arrays are also object.
+
+*/
 
 // // Exercise 1 : Calculate the average marks of the class
 
