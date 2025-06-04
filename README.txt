@@ -29,6 +29,7 @@ This repository contains my structured learning progress in JavaScript, followin
 23] Classes & Objects
 24] Error Handling
 25] CallBacks, Async-Await & Promises
+26] Fetch API
 
 📘 Description:
 ---------------

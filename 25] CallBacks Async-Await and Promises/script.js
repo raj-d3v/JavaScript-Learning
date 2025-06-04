@@ -1,168 +1,104 @@
 /*
------------------------------------- Asynchronous Programming ------------------------------------
+------------------------------------ Handling Asynchronous Code in JavaScript ------------------------------------
 
--> All three (async/await, promises, callbacks) are different techniques to handle asynchronous code — but they can do the same things. You don’t need to use all of them together.
+There are three main ways to handle asynchronous operations in JavaScript:
 
--> What is better than the other to use
-async await > promise chains > callback hell
+1. Callback Functions
+   - The earliest way to handle async code.
+   - You pass a function (callback) that runs after an async task finishes.
+   - Can lead to nested callbacks known as "callback hell," which is hard to read and maintain.
 
-** Difference Between Asynchronous & Synchronous 
+2. Promises
+   - An object representing the eventual completion (or failure) of an async operation.
+   - Helps avoid callback hell by allowing chaining with .then() for success and .catch() for errors.
+   - Improves readability and error handling compared to callbacks.
 
--- Synchronous -- 
+3. Async/Await
+   - Syntactic sugar built on top of Promises.
+   - Allows writing asynchronous code that looks like synchronous code.
+   - Uses the 'async' keyword for functions returning a Promise.
+   - Uses 'await' to pause execution until the Promise settles.
+   - The cleanest and most readable way to handle async operations.
 
-It means the code runs in a particular sequence of instructions given in the program. Each instruction waits for the previous instruction to complete its execution
+Note: Async/Await cannot be used without Promises underneath. They are not separate concepts but layers of abstraction built on top of Promises.
 
--- Example: It goes in order
-console.log("one");
-console.log("two");
-console.log("three");
+*/
 
--- Asynchronous -- 
+/////////////////////////////////////////
+// Example implementations below:
+/////////////////////////////////////////
 
-Due to synchronous programming, sometimes important instructions get blocked due to some previous instructions, which causes a delay in the UI.
+/*
+------------------------------------ Callback Version ------------------------------------
 
-Asynchronous code execution allows us to execute next instrutcions immediately and doesn't block the flow. Side by side it runs the block which is taking more time and will display that as well
+-> Uses a callback function passed as an argument.
+-> Old school way to handle async operations.
+-> Can get messy with nested callbacks ("callback hell").
+*/
 
+function fetchUserDataCallback(callback) {
+  console.log("Fetching user data (callback)...");
 
-Example: In this the '3' will be displayed it wont wait for the function to run
-
-console.log("1")
-
-function greeting() {
-  console.log("2");
+  setTimeout(() => {
+    const user = { name: "John Doe", email: "john@example.com" };
+    callback(null, user); // first arg for error, second for data
+  }, 2000);
 }
 
-setTimeout(greeting, 2000);
-console.log("3");
-
-*/
-
-/*
------------------------------------- Callback Function  ------------------------------------
-
-    -> A function that is passed as an argument to another function
-
-    -> used to handle asynchronous operations: 
-    1] Reading a file
-    2] Network requests
-    3] Interacting with databases
-
-    -> Simple terms: 
-    "Hey, when you're done, call this next"
-
-    *** What is Callback Hell ***
-
-    -> Nested callback stacked below one another forming a pyramid structure. (Pyramid of Doom)
-
-    -> It is not a error or doesn't get us error but This style of programming becomes difficult to understand & manage
-
-    -> Solution is to use promises
-
-*/
-
-// // Example: Here we are calling the 'goodBye' function inside our 'hello' function so it runs after 'hello' is executed
-
-// function hello(goodBye) {
-//   console.log("Hello");
-//   goodBye();
-// }
-
-// function goodBye() {
-//   console.log("Goodbye");
-// }
-
-// hello(goodBye);
-
-// // Example of Callback hell :
-
-// function task1(task2) {
-//   setTimeout(() => {
-//     console.log("Task 1 complete");
-//     task2();
-//   }, 2000);
-// }
-// function task2(task3) {
-//   setTimeout(() => {
-//     console.log("Task 2 complete");
-//     task3();
-//   }, 2000);
-// }
-// function task3(task4) {
-//   setTimeout(() => {
-//     console.log("Task 3 complete");
-//     task4();
-//   }, 2000);
-// }
-// function task4(task5) {
-//   setTimeout(() => {
-//     console.log("Task 4 complete");
-//     task5();
-//   }, 2000);
-// }
-// function task5() {
-//   setTimeout(() => {
-//     console.log("All task complete");
-//   }, 2000);
-// }
-// // This is callback hell look the pyramid below
-// task1(() => {
-//   task2(() => {
-//     task3(() => {
-//       task4(() => {
-//         task5();
-//       });
-//     });
-//   });
-// });
-
-/*
------------------------------------- Promises ------------------------------------ 
-
-    -> Promis is for "eventual" completion of task.
-
-    -> It is an object in JS
-
-    -> In general programming we don't create a promise object. If we send API request to get data it returns us promise which we handle in our website
-
-    -> It is a solution to callback hell
-    
-
-    -> syntax:  
-
-        let promise = new Promise( (resolve, reject) => { .... })
-
-        * reject & resolve are callbacks provided by JS
-
-    -> Promise has three states
-        
-        1. Pending
-        2. resolve (fulfilled)
-        3. rejected
-
-    -> how we handle or use promises in our program. So, for that we use
-
-        .then() & .catch()
-
-    -> To handle a successful response from an API call, use .then().
-
-        promise.then( (resolve) => {...} )
-
-    -> To handle an error from an API call, use .catch().
-
-        promise.catch( (error) => {...} )
-   
-*/
-
-// // Here we are creating our own promise but generaly we just handle the promise
-
-let promise = new Promise((resolve, reject) => {
-  console.log("I'm a promise");
-  //   resolve("Success");
-  //   reject("Error");
+// Using callback version
+fetchUserDataCallback((error, data) => {
+  if (error) {
+    console.log("Error:", error);
+  } else {
+    console.log("Callback Version:", data);
+  }
 });
 
 /*
------------------------------------- Async & Await ------------------------------------ 
+------------------------------------ Promise Version ------------------------------------
 
-
+-> Promises represent eventual completion (or failure) of async operation.
+-> Helps avoid callback hell by chaining .then() and .catch().
 */
+
+function fetchUserDataPromise() {
+  return new Promise((resolve, reject) => {
+    console.log("Fetching user data (promise)...");
+
+    setTimeout(() => {
+      const success = true; // simulate success or failure
+
+      if (success) {
+        const user = { name: "John Doe", email: "john@example.com" };
+        resolve(user);
+      } else {
+        reject("Failed to fetch user data");
+      }
+    }, 2000);
+  });
+}
+
+// Using Promise with .then() and .catch()
+fetchUserDataPromise()
+  .then((data) => console.log("Promise Version:", data))
+  .catch((error) => console.log("Error:", error));
+
+/*
+------------------------------------ Async/Await Version ------------------------------------
+
+-> async/await is syntactic sugar built on top of Promises.
+-> Makes async code look synchronous and easier to read.
+-> async functions always return a Promise.
+-> await pauses execution until the Promise resolves or rejects.
+*/
+
+async function fetchUserDataAsync() {
+  try {
+    const data = await fetchUserDataPromise(); // wait until promise resolves
+    console.log("Async/Await Version:", data);
+  } catch (error) {
+    console.log("Error:", error);
+  }
+}
+
+fetchUserDataAsync();
